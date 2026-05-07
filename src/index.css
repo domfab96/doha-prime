@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-forest-900 antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Photo placeholder utility */
+  .photo-placeholder {
+    @apply w-full flex flex-col items-center justify-center
+           bg-forest-50 border-2 border-dashed border-forest-400
+           text-forest-600 font-sans font-medium text-sm
+           rounded-xl gap-2 cursor-pointer
+           hover:bg-forest-100 transition-colors duration-200;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section padding */
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  /* Green badge */
+  .badge-green {
+    @apply inline-block bg-forest-100 text-forest-700 text-xs font-semibold
+           tracking-widest uppercase px-3 py-1 rounded-full;
+  }
+
+  /* Earth badge */
+  .badge-earth {
+    @apply inline-block bg-earth-100 text-earth-700 text-xs font-semibold
+           tracking-widest uppercase px-3 py-1 rounded-full;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply bg-forest-700 hover:bg-forest-800 text-white font-medium
+           px-6 py-3 rounded-lg transition-all duration-200
+           shadow-sm hover:shadow-md active:scale-95;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply bg-earth-500 hover:bg-earth-600 text-white font-medium
+           px-6 py-3 rounded-lg transition-all duration-200
+           shadow-sm hover:shadow-md active:scale-95;
+  }
+
+  /* WhatsApp button */
+  .btn-whatsapp {
+    @apply bg-[#25D366] hover:bg-[#1ebe57] text-white font-medium
+           px-5 py-2.5 rounded-lg transition-all duration-200
+           flex items-center gap-2 text-sm active:scale-95;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-lg
+           transition-all duration-300 overflow-hidden border border-forest-100;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  /* Animated underline */
+  .underline-grow {
+    @apply relative after:absolute after:bottom-0 after:left-0
+           after:w-0 after:h-0.5 after:bg-earth-400
+           after:transition-all after:duration-300
+           hover:after:w-full;
+  }
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
