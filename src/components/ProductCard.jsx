@@ -1,6 +1,6 @@
 import PhotoPlaceholder from './PhotoPlaceholder'
 
-const WHATSAPP_NUMBER = '2340000000000' // ← Replace with your number
+const WHATSAPP_NUMBER = '2347083316383' // ← Replace with your number
 
 export default function ProductCard({ id, name, price, unit, badge, description, inStock = true, image }) {
   const message = encodeURIComponent(`Hi! I'd like to order: ${name} @ ₦${price}/${unit}`)

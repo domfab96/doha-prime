@@ -44,11 +44,11 @@ export default function Footer() {
             <h4 className="font-serif text-base font-semibold mb-4 text-earth-300">Contact</h4>
             <ul className="space-y-2 text-sm text-forest-300">
               <li>📍 Abuja, FCT, Nigeria</li>
-              <li>📞 +234 — — — — — —</li>
-              <li>✉️ info@dohaprime.com</li>
+              <li>📞 +234 7083316383</li>
+              <li>✉️ business@dohaprimeventure.com</li>
               <li className="pt-2">
                 <a
-                  href="https://wa.me/234000000000"
+                  href="https://wa.me/2347083316383"
                   className="inline-flex items-center gap-2 bg-[#25D366]/20 hover:bg-[#25D366]/40 text-[#25D366] px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
                 >
                   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
