@@ -4,7 +4,7 @@ import { useContent } from '../context/ContentContext'
 import { resizeImageToBase64, wordCount } from '../utils/imageUtils'
 
 // ─── Shared helpers ───────────────────────────────────────────────────────────
-const DEMO_PIN = '1234'
+const DEMO_PIN = '857692'
 
 const Input = ({ label, ...props }) => (
   <div>
