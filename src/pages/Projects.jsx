@@ -1,4 +1,5 @@
 import PhotoPlaceholder from '../components/PhotoPlaceholder'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const josOrchardCrops = [
   { name: 'Avocado',    icon: '🥑', note: 'Hass & Fuerte varieties' },
@@ -45,7 +46,7 @@ export default function Projects() {
       {/* ─── CURRENT PROJECT: ABUJA FISH FARM ─────────────────────── */}
       <section className="section-pad bg-cream">
         <div className="section-container">
-          <div className="flex items-center gap-3 mb-8">
+          <div ref={useScrollReveal()} className="reveal flex items-center gap-3 mb-8">
             <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
             <span className="badge-green">Active Project</span>
           </div>
@@ -58,7 +59,7 @@ export default function Projects() {
           </p>
 
           {/* Pond gallery — fixed heights, object-position tuned per photo */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+          <div className="reveal-stagger grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
             {pondGallery.map((img, i) => (
               <div
                 key={i}
@@ -76,7 +77,7 @@ export default function Projects() {
           </div>
 
           {/* Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div ref={useScrollReveal()} className="reveal-stagger grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { label: 'Active Ponds',     value: '5',   unit: '' },
               { label: 'Stocking Density', value: '120', unit: 'fish/m²' },
@@ -94,10 +95,102 @@ export default function Projects() {
         </div>
       </section>
 
+
+      {/* ── HARVEST CYCLE TIMELINE ── */}
+      <section className="section-pad bg-forest-900">
+        <div className="section-container">
+          <div className="text-center mb-12">
+            <span className="badge-earth mb-4 font-sans">How We Produce</span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-2 mb-3">
+              From Fingerling to Your Table
+            </h2>
+            <p className="text-forest-300 font-sans text-sm max-w-xl mx-auto">
+              Every batch of Doha Prime catfish follows a rigorous 5–6 month production cycle.
+              Here's exactly what happens before fish reaches your plate.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline connector line */}
+            <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-forest-700 z-0" style={{ top: '2rem' }} />
+
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-6 relative z-10">
+              {[
+                {
+                  week: 'Week 0',
+                  icon: '🐣',
+                  title: 'Fingerling stocking',
+                  desc: 'Juvenile catfish (5–10g each) are sourced from certified hatcheries and introduced to prepared ponds.',
+                  color: 'bg-forest-700 border-forest-500',
+                },
+                {
+                  week: 'Week 2–4',
+                  icon: '🌊',
+                  title: 'Water conditioning',
+                  desc: 'Daily water quality checks. pH, dissolved oxygen and ammonia balanced for optimal growth.',
+                  color: 'bg-forest-700 border-forest-500',
+                },
+                {
+                  week: 'Week 4–12',
+                  icon: '🌱',
+                  title: 'Grow-out phase',
+                  desc: 'High-protein pellets fed 2× daily. Fish weighed every two weeks to track FCR and adjust rations.',
+                  color: 'bg-forest-700 border-forest-500',
+                },
+                {
+                  week: 'Week 12–20',
+                  icon: '📊',
+                  title: 'Grading & monitoring',
+                  desc: 'Fish are graded by size to prevent cannibalism. Unhealthy fish isolated. Mortality logged daily.',
+                  color: 'bg-forest-700 border-forest-500',
+                },
+                {
+                  week: 'Week 20–24',
+                  icon: '⚖️',
+                  title: 'Harvest readiness',
+                  desc: 'Target weight 700g–1kg per fish. Sample weighing confirms readiness. Harvest date scheduled.',
+                  color: 'bg-earth-700 border-earth-500',
+                },
+                {
+                  week: 'Harvest Day',
+                  icon: '🐟',
+                  title: 'Harvest & delivery',
+                  desc: 'Fish netted, counted, graded and weighed. Delivered live or processed to customers within hours.',
+                  color: 'bg-green-900 border-green-600',
+                },
+              ].map(({ week, icon, title, desc, color }, i) => (
+                <div key={title} className="flex flex-col items-center text-center">
+                  {/* Step circle */}
+                  <div className={`w-16 h-16 rounded-full border-2 flex items-center justify-center text-2xl mb-4 flex-shrink-0 ${color}`}>
+                    {icon}
+                  </div>
+                  <div className="text-earth-400 text-xs font-bold tracking-widest uppercase font-sans mb-1">{week}</div>
+                  <h3 className="font-serif text-sm font-bold text-white mb-2 leading-snug">{title}</h3>
+                  <p className="text-forest-400 text-xs font-sans leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { label: 'Average cycle length', value: '5–6 months' },
+              { label: 'Target harvest weight', value: '700g – 1kg' },
+              { label: 'Target FCR',            value: '1.2 – 1.5 : 1' },
+            ].map(({ label, value }) => (
+              <div key={label} className="bg-forest-800 border border-forest-700 rounded-xl p-5 text-center">
+                <p className="font-serif text-2xl font-bold text-earth-300 mb-1">{value}</p>
+                <p className="text-forest-400 text-xs font-sans">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── UPCOMING PROJECT: JOS ORCHARD ────────────────────────── */}
       <section className="section-pad bg-white">
         <div className="section-container">
-          <div className="flex items-center gap-3 mb-8">
+          <div ref={useScrollReveal()} className="reveal flex items-center gap-3 mb-8">
             <span className="w-3 h-3 bg-earth-400 rounded-full" />
             <span className="badge-earth">Upcoming Project</span>
           </div>
