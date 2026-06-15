@@ -602,7 +602,7 @@ export default function Admin() {
 
   if (!authed) {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center bg-cream">
+      <div className="min-h-screen flex items-center justify-center bg-cream">
         <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-sm border border-forest-100">
           <div className="text-center mb-6">
             <img src="/images/doha-logo.jpg" alt="Doha Prime" className="w-16 h-16 rounded-xl mx-auto mb-4 object-cover" />
@@ -613,9 +613,16 @@ export default function Admin() {
             onChange={e => setPin(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && pin === DEMO_PIN && setAuthed(true)}
             className="w-full border border-forest-200 rounded-xl px-4 py-3 text-center text-2xl tracking-widest focus:outline-none focus:ring-2 focus:ring-forest-500 mb-4 font-sans" />
-          <button onClick={() => pin === DEMO_PIN ? setAuthed(true) : alert('Incorrect PIN. Demo: 1234')}
+          <button onClick={() => pin === DEMO_PIN ? setAuthed(true) : alert('Incorrect PIN. Please contact the administrator.')}
             className="btn-primary w-full py-3 font-sans">Enter Dashboard →</button>
-          <p className="text-center text-xs text-forest-400 mt-3 font-sans">Demo PIN: <strong>1234</strong></p>
+          <p className="text-center text-xs text-forest-400 mt-3 font-sans">
+            Contact admin for access
+          </p>
+          <div className="mt-6 text-center">
+            <a href="/" className="text-xs text-forest-400 hover:text-forest-600 font-sans transition-colors">
+              ← Back to Doha Prime Ventures
+            </a>
+          </div>
         </div>
       </div>
     )
@@ -632,8 +639,8 @@ export default function Admin() {
   }
 
   return (
-    <div className="min-h-screen pt-20 flex bg-cream">
-      <aside className={`fixed top-20 left-0 bottom-0 z-40 w-56 bg-forest-900 flex flex-col transition-transform duration-300
+    <div className="min-h-screen flex bg-cream">
+      <aside className={`fixed top-0 left-0 bottom-0 z-40 w-56 bg-forest-900 flex flex-col transition-transform duration-300
         ${sidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static lg:top-auto lg:bottom-auto lg:z-auto`}>
         <div className="p-4 border-b border-forest-800">
           <p className="font-serif text-white font-semibold text-sm">Admin Panel</p>
@@ -668,9 +675,14 @@ export default function Admin() {
           <h1 className="font-serif text-lg font-bold text-forest-900">
             {SIDEBAR.find(s => s.id === active)?.icon} {SIDEBAR.find(s => s.id === active)?.label ?? 'Dashboard'}
           </h1>
-          <div className="ml-auto flex items-center gap-3">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-xs text-forest-500 font-sans">Live</span>
+          <div className="ml-auto flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-xs text-forest-500 font-sans">Live</span>
+            </span>
+            <a href="/" className="text-xs text-forest-400 hover:text-forest-700 font-sans transition-colors border border-forest-200 px-3 py-1.5 rounded-lg hover:bg-forest-50">
+              ← Back to site
+            </a>
           </div>
         </div>
         <div className="p-6 lg:p-8 max-w-5xl">

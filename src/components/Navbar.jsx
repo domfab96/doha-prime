@@ -47,6 +47,7 @@ export default function Navbar() {
             </div>
           </Link>
 
+          {/* Desktop nav — no Admin link */}
           <nav className="hidden md:flex items-center gap-0.5">
             {navLinks.map(({ to, label }) => (
               <NavLink key={to} to={to} end={to === '/'}
@@ -57,7 +58,6 @@ export default function Navbar() {
                 {label}
               </NavLink>
             ))}
-            <Link to="/admin" className="ml-2 btn-primary text-sm py-2 px-4">Admin ↗</Link>
           </nav>
 
           <button onClick={() => setOpen(!open)}
@@ -70,6 +70,7 @@ export default function Navbar() {
           </button>
         </div>
 
+        {/* Mobile nav — no Admin link */}
         {open && (
           <div className="md:hidden bg-white border-t border-forest-100 py-4 px-2 shadow-xl rounded-b-2xl">
             <div className="flex items-center gap-3 px-4 pb-4 mb-2 border-b border-forest-100">
@@ -87,7 +88,6 @@ export default function Navbar() {
                 {label}
               </NavLink>
             ))}
-            <Link to="/admin" className="flex btn-primary justify-center mt-2 text-sm">Admin Panel ↗</Link>
           </div>
         )}
       </div>

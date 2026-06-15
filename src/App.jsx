@@ -21,6 +21,19 @@ function ScrollToTop() {
   return null
 }
 
+// ── Public layout: Navbar + Footer + Cart ──────────────────────────────────
+function PublicLayout({ children }) {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+      <Cart />
+      <FloatingCart />
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -28,24 +41,24 @@ export default function App() {
         <ContentProvider>
           <CartProvider>
             <ScrollToTop />
-            <div className="flex flex-col min-h-screen">
-              <Navbar />
-              <main className="flex-1">
-                <Routes>
-                  <Route path="/"         element={<Home />} />
-                  <Route path="/about"    element={<About />} />
-                  <Route path="/projects" element={<Projects />} />
-                  <Route path="/store"    element={<Store />} />
-                  <Route path="/records"  element={<Records />} />
-                  <Route path="/admin"    element={<Admin />} />
-                  <Route path="/blog"     element={<Blog />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-            {/* Cart drawer + floating button — available on every page */}
-            <Cart />
-            <FloatingCart />
+            <Routes>
+              {/* ── Hidden admin route — NO Navbar, NO Footer ── */}
+              <Route path="/secure-admin" element={<Admin />} />
+
+              {/* ── All public routes share the PublicLayout ── */}
+              <Route path="/*" element={
+                <PublicLayout>
+                  <Routes>
+                    <Route path="/"         element={<Home />} />
+                    <Route path="/about"    element={<About />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/store"    element={<Store />} />
+                    <Route path="/records"  element={<Records />} />
+                    <Route path="/blog"     element={<Blog />} />
+                  </Routes>
+                </PublicLayout>
+              } />
+            </Routes>
           </CartProvider>
         </ContentProvider>
       </StoreProvider>
