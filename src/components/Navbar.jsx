@@ -5,6 +5,7 @@ const navLinks = [
   { to: '/',         label: 'Home' },
   { to: '/about',    label: 'About Us' },
   { to: '/projects', label: 'Projects' },
+  { to: '/fishtrackpro', label: 'FishTrackPro' },
   { to: '/store',    label: 'Store' },
   { to: '/blog',     label: 'Blog' },
   { to: '/records',  label: 'Farm Records' },

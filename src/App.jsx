@@ -14,6 +14,7 @@ import Store         from './pages/Store'
 import Records       from './pages/Records'
 import Admin         from './pages/Admin'
 import Blog          from './pages/Blog'
+import FishTrackPro  from './pages/FishTrackPro'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -55,6 +56,7 @@ export default function App() {
                     <Route path="/store"    element={<Store />} />
                     <Route path="/records"  element={<Records />} />
                     <Route path="/blog"     element={<Blog />} />
+                    <Route path="/fishtrackpro" element={<FishTrackPro />} />
                   </Routes>
                 </PublicLayout>
               } />

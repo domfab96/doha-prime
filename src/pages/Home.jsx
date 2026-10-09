@@ -113,12 +113,14 @@ export default function Home() {
               Doha Prime Ventures combines engineering precision with deep agricultural know-how to create profitable, sustainable food systems.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title:'Catfish Production', badge:'Active · Abuja', img:'/images/catfish_ponds.jpg', pos:'center center',
                 desc:'Premium hybrid catfish raised in controlled pond environments. FCR-optimized feeding cycles ensure healthy, market-ready fish every harvest.', to:'/projects' },
               { title:'Horticulture Pilot', badge:'Upcoming · Jos', img:'/images/jos_orchard.jpg',  pos:'center 40%',
                 desc:'Launching Jos Plateau orchard with avocado, apple, grapefruit, date, pineapple, and greenhouse crops leveraging the cool highland climate.', to:'/projects' },
+              { title:'FishTrackPro', badge:'Software · Live', img:'/images/pond_feeding.jpg', pos:'center 20%',
+                desc:'Our own water-monitoring and farm-record software for catfish farms. A solar sensor watches the pond and the alert reaches the farmer\u2019s phone \u2014 in four Nigerian languages.', to:'/fishtrackpro' },
             ].map(item => (
               <div key={item.title} className="card overflow-hidden group">
                 <div className="relative overflow-hidden h-52">

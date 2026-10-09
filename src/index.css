@@ -94,6 +94,46 @@
   }
 }
 
+/* ── Scroll reveal — paired with the useScrollReveal hook ──────────────────
+   .reveal          the element itself fades up when it enters the viewport
+   .reveal-stagger  its direct children fade up one after another
+   Anyone with reduced motion requested gets the final state with no animation. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.00s; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.32s; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 0.48s; }
+.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 0.56s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Scroll animations */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
